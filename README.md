@@ -5,13 +5,13 @@ This project implements a **Role-Based Access Control (RBAC)** system with authe
 
 ## **Testing the API**
 
+**Using Postman**
+- Visit `https://documenter.getpostman.com/view/39805087/2sAYBVjCg7` to View the Postman Collection testing of all endpoints.
+
 **Using Swagger UI**
 - Visit `http://localhost:3000/api-docs` to use the Swagger UI for testing all endpoints.
 - Provide input as required and see real-time responses.
 
-**Using Postman**
-- Visit `https://documenter.getpostman.com/view/39805087/2sAYBVjCg7` to View the Postman Collection testing of all endpoints.
-  
 ---
 
 ## **Features**
