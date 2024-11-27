@@ -1,0 +1,15 @@
+{"level":"info","message":"Server running on port 3000","timestamp":"2024-11-27T14:21:34.619Z"}
+{"level":"info","message":"MongoDB Connected","timestamp":"2024-11-27T14:21:34.993Z"}
+{"level":"info","message":"Server running on port 3000","timestamp":"2024-11-27T14:23:13.598Z"}
+{"level":"info","message":"MongoDB Connected","timestamp":"2024-11-27T14:23:13.893Z"}
+{"level":"info","message":"User adminUser registered successfully","timestamp":"2024-11-27T14:32:46.048Z"}
+{"level":"info","message":"User adminUser logged in successfully","timestamp":"2024-11-27T14:35:06.773Z"}
+{"level":"info","message":"Role Moderator created successfully","timestamp":"2024-11-27T14:41:59.160Z"}
+{"level":"info","message":"Server running on port 3000","timestamp":"2024-11-27T15:09:47.111Z"}
+{"level":"info","message":"MongoDB Connected","timestamp":"2024-11-27T15:09:47.390Z"}
+{"level":"info","message":"Server running on port 3000","timestamp":"2024-11-27T15:09:58.648Z"}
+{"level":"info","message":"MongoDB Connected","timestamp":"2024-11-27T15:09:58.920Z"}
+{"level":"info","message":"Server running on port 3000","timestamp":"2024-11-27T15:10:02.897Z"}
+{"level":"info","message":"MongoDB Connected","timestamp":"2024-11-27T15:10:03.199Z"}
+{"level":"info","message":"Server running on port 3000","timestamp":"2024-11-27T15:10:05.160Z"}
+{"level":"info","message":"MongoDB Connected","timestamp":"2024-11-27T15:10:05.425Z"}

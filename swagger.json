@@ -1,0 +1,238 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "RBAC API",
+    "description": "Role-Based Access Control API for authentication, role management, and authorization"
+  },
+  "host": "localhost:3000",
+  "basePath": "/api",
+  "schemes": ["http"],
+  "paths": {
+    "/auth/register": {
+      "post": {
+        "summary": "Register a new user",
+        "description": "Allows new users to register by providing a username, password, and roles.",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "username": { "type": "string", "example": "testuser" },
+                "password": { "type": "string", "example": "password123" },
+                "roles": {
+                  "type": "array",
+                  "items": { "type": "string" },
+                  "example": ["User"]
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "User registered successfully"
+          },
+          "500": {
+            "description": "Registration failed"
+          }
+        }
+      }
+    },
+    "/auth/login": {
+      "post": {
+        "summary": "User login",
+        "description": "Allows a user to log in and receive a JWT token.",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "username": { "type": "string", "example": "testuser" },
+                "password": { "type": "string", "example": "password123" }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Login successful, returns JWT token",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "token": { "type": "string", "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..." }
+              }
+            }
+          },
+          "401": {
+            "description": "Invalid credentials"
+          },
+          "404": {
+            "description": "User not found"
+          }
+        }
+      }
+    },
+    "/protected/admin": {
+      "get": {
+        "summary": "Admin-only route",
+        "description": "Accessible only to users with the 'Admin' role.",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "example": "Bearer {your-token}"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Welcome Admin!"
+          },
+          "403": {
+            "description": "Access denied"
+          },
+          "401": {
+            "description": "Invalid or missing token"
+          }
+        }
+      }
+    },
+    "/protected/user": {
+      "get": {
+        "summary": "User and Admin route",
+        "description": "Accessible to users with 'User' or 'Admin' roles.",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "example": "Bearer {your-token}"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Welcome User!"
+          },
+          "403": {
+            "description": "Access denied"
+          },
+          "401": {
+            "description": "Invalid or missing token"
+          }
+        }
+      }
+    },
+    "/admin/roles": {
+      "post": {
+        "summary": "Create a new role",
+        "description": "Allows an Admin to create a new role with specific permissions.",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "example": "Bearer {your-token}"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "role": { "type": "string", "example": "Moderator" },
+                "permissions": {
+                  "type": "array",
+                  "items": { "type": "string" },
+                  "example": ["read", "write", "delete"]
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Role created successfully"
+          },
+          "403": {
+            "description": "Access denied"
+          },
+          "500": {
+            "description": "Failed to create role"
+          }
+        }
+      },
+      "get": {
+        "summary": "Get all roles",
+        "description": "Retrieve a list of all roles. Only accessible by Admins.",
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "example": "Bearer {your-token}"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of roles",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "role": { "type": "string", "example": "User" },
+                  "permissions": {
+                    "type": "array",
+                    "items": { "type": "string" },
+                    "example": ["read"]
+                  }
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Access denied"
+          },
+          "500": {
+            "description": "Failed to retrieve roles"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "User": {
+      "type": "object",
+      "properties": {
+        "username": { "type": "string" },
+        "password": { "type": "string" },
+        "roles": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "Role": {
+      "type": "object",
+      "properties": {
+        "role": { "type": "string" },
+        "permissions": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    }
+  }
+}
