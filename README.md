@@ -1,6 +1,3 @@
-﻿# VrVSec
-### **README.md**
-
 # Role-Based Access Control (RBAC) System
 
 This project implements a **Role-Based Access Control (RBAC)** system with authentication and authorization.
