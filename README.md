@@ -43,7 +43,7 @@ This project implements a **Role-Based Access Control (RBAC)** system with authe
 - **Database**: MongoDB
 - **Authentication**: JWT (JSON Web Tokens)
 - **Logging**: Winston
-- **API Documentation**: Swagger UI
+- **API Documentation**: Swagger UI, POSTMAN
 
 ---
 
